@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, except: [:index, :new, :create]
+  before_action :set_expense, except: [:index, :new, :create, :monthly_expenses]
 
   def index
     @expenses = Expense.all.order(date: :desc)
@@ -52,7 +52,7 @@ class ExpensesController < ApplicationController
     month_beginning = params[:month].to_date.beginning_of_month
     month_end = month_beginning.end_of_month
 
-    @expenses = Expense.where("date >= ? AND date < ?", month_beginning, month_end).order(date: :desc)
+    @expenses = Expense.where(date: month_beginning..month_end).order(date: :desc)
     @total_amount = @expenses.sum(:amount)
   end
 
