@@ -1,5 +1,7 @@
-<div>
+<div class="w-full h-fit sm:p-2 grid place-items-center text-fSize__xl uppercase font-semibold">
   <h1>Add Expense</h1>
 </div>
 
-<%= render partial: "expense_form", locals: {expense: @expense} %>
+<div class="w-full sm:w-1/2 h-full px-2 sm:py-2">
+  <%= render partial: "expense_form", locals: {expense: @expense} %>
+</div>
