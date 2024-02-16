@@ -15,7 +15,7 @@
 
 @layer components {
   .btn__primary {
-    @apply w-full sm:w-1/3 grid place-items-center border-2 border-stone-950 rounded-lg px-6 py-2 shadow-retro__dark uppercase tracking-wider;
+    @apply w-full sm:w-1/3 grid place-items-center border-2 border-stone-950 rounded-lg px-6 py-2 shadow-retro__dark uppercase tracking-wider focus:shadow-retro__circle focus:translate-y-1;
   }
 
   .input__field {

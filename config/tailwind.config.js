@@ -15,6 +15,7 @@ module.exports = {
       },
       boxShadow: {
         "retro__dark": "5px 5px 0px 0px rgba(28, 25, 23, 0.85)",
+        "retro__inset": "inset 5px 5px 0px 0px rgba(28, 25, 23, 0.85)",
         "retro__circle": "3px 3px 0px 0px rgba(28, 25, 23, 0.85)",
       },
       fontSize: {
