@@ -52,19 +52,13 @@
         <% @expenses.each do |expense| %>
           <tr>
             <td class="table__row">
-              <div class="text-sm text-gray-900">
-                <%= expense.date %>
-              </div>
+              <%= expense.date %>
             </td>
-            <td class="table__row">
-              <div class="text-sm text-gray-900 font-semibold">
-                <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>
-              </div>
+            <td class="table__row font-semibold">
+              <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>
             </td>
-            <td class="table__row">
-              <div class="text-sm text-gray-900 font-semibold">
-                <%= expense.expense_item %>
-              </div>
+            <td class="table__row font-semibold">
+              <%= expense.expense_item %>
             </td>
             <td class="table__row">
               <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-stone-800">
@@ -81,9 +75,7 @@
               </div>
             </td>
             <td class="table__row">
-              <div class="text-sm text-gray-900">
-                <%= expense.remarks %>
-              </div>
+              <%= expense.remarks %>
             </td>
           </tr>
         <% end %>

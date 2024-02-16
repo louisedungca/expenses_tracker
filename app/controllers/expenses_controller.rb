@@ -7,6 +7,7 @@ class ExpensesController < ApplicationController
   end
 
   def show
+    redirect_to expenses_month_path(@expense.date.beginning_of_month)
   end
 
   def new
@@ -45,6 +46,14 @@ class ExpensesController < ApplicationController
       flash[:alert] = "Oops, a problem occurred. Please try again."
       render :index, status: 422
     end
+  end
+
+  def monthly_expenses
+    month_beginning = params[:month].to_date.beginning_of_month
+    month_end = month_beginning.end_of_month
+
+    @expenses = Expense.where("date >= ? AND date < ?", month_beginning, month_end).order(date: :desc)
+    @total_amount = @expenses.sum(:amount)
   end
 
   private
