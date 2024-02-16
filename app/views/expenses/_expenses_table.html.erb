@@ -35,7 +35,8 @@
               <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>
             </td>
             <td class="table__row font-semibold">
-              <%= link_to expense.expense_item, expenses_month_path(month: expense.date.beginning_of_month) %>
+              <% month = expense.date.beginning_of_month %>
+              <%= link_to expense.expense_item, expenses_month_path(month: month) %>
             </td>
             <td class="table__row">
               <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-stone-800">
