@@ -1,3 +1,86 @@
-<div>
-  <h1>Expenses</h1>
-</div>
+<header class="sticky inset-0 z-20 h-16 w-full bg-stone-400/75 border-4 border-stone-950 flex justify-between items-center gap-2 pr-4">
+  <div class="group">
+    <%= link_to "Add Expense", new_expense_path, class:"tab" %>
+  </div>
+  
+  <div class="flex gap-2">  
+    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 bg-stone-950 shadow-retro__circle"></div>
+    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
+    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
+  </div>
+</header>
+
+<section class="border-b-4 border-r-4 border-l-4 border-stone-950 h-full w-full flex flex-col items-center sm:gap-4 px-4 py-2">
+
+  <div class="w-full h-fit sm:p-2 grid place-items-center text-fSize__xl uppercase font-semibold">
+    <h1>Expenses</h1>
+  </div>
+
+  <div class="">
+    <p class="font-bold fSize__lg text-stone-900">
+      Total:
+      <%= number_to_currency(@total_amount, precision: 2, unit: "PHP ") %>
+    </p>
+  </div>
+
+  <div class="w-fit h-auto grid place-items-center border-4 border-stone-950 rounded-xl shadow-retro__dark">  
+    <table class="table-auto divide-y divide-stone-600 ">
+      <thead class="bg-stone-700">
+        <tr>
+          <th scope="col" class="table__header">
+            Date
+          </th>
+          <th scope="col" class="table__header">
+            Amount
+          </th>
+          <th scope="col" class="table__header">
+            Expense Item
+          </th>
+          <th scope="col" class="table__header">
+          </th>
+          <th scope="col" class="table__header">
+          </th>
+          <th scope="col" class="table__header">
+            Remarks
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y-2 divide-stone-600 divide-dashed">
+        <% @expenses.each do |expense| %>
+          <tr>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= expense.date %>
+              </div>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900 font-semibold">
+                <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>
+              </div>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900 font-semibold">
+                <%= expense.expense_item %>
+              </div>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= link_to "Edit", edit_expense_path(expense) %>
+              </div>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= link_to "Delete", expense_path(expense), data: {turbo_method: :delete, turbo_confirm: "Do you want to permanently delete this expense item?"} %>
+              </div>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= expense.remarks %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

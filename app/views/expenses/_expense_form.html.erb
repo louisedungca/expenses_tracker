@@ -1,0 +1,39 @@
+<%= form_with model: @expense do |form| %>  
+<div class="w-full h-full flex flex-col justify-center gap-3 sm:gap-[1.5rem]">
+  <% if @expense.errors.any? %>    
+    <div class="flex flex-col justify-center">
+      <% @expense.errors.full_messages.each do |message| %>
+        <p class="text-red-500 text-fSize__sm lowercase font-semibold">
+          ** <%= message %>
+        </p>
+      <% end %>  
+    </div>
+  <% end %>
+  
+  <div class="h-full w-full flex flex-col gap-2">
+    <div class="input__block">
+      <%= form.label "Date:", class:"input__label" %>
+      <%= form.date_field :date, class:"input__field" %>
+    </div>
+
+    <div class="input__block">
+      <%= form.label "Expense Item:", class:"input__label" %>
+      <%= form.text_field :expense_item, class:"input__field" %>
+    </div>
+
+    <div class="input__block">
+      <%= form.label "Amount:", class:"input__label" %>
+      <%= form.text_field :amount, class:"input__field" %>
+    </div>
+
+    <div class="input__block">
+      <%= form.label "Remarks:", class:"input__label" %>
+      <%= form.text_area :remarks, class:"input__field resize-none h-1/5" %>
+    </div>
+  </div>  
+
+  <div class="w-full flex flex-col justify-center items-center gap-3 mt-4">
+    <%= form.button "Submit", class:"btn__primary font-semibold" %>
+  </div>
+</div>
+<% end %>
