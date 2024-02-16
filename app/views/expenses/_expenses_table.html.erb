@@ -1,0 +1,61 @@
+<p class="font-bold text-fSize__lg text-stone-900">
+  Total:
+  <%= number_to_currency(@total_amount, precision: 2, unit: "PHP ") %>
+</p>
+
+<div class="w-fit h-auto grid place-items-center border-4 border-stone-950 rounded-xl shadow-retro__dark">  
+    <table class="table-auto divide-y divide-stone-600 ">
+      <thead class="bg-stone-700">
+        <tr>
+          <th scope="col" class="table__header">
+            Date
+          </th>
+          <th scope="col" class="table__header">
+            Amount
+          </th>
+          <th scope="col" class="table__header">
+            Expense Item
+          </th>
+          <th scope="col" class="table__header">
+          </th>
+          <th scope="col" class="table__header">
+          </th>
+          <th scope="col" class="table__header">
+            Remarks
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y-2 divide-stone-600 divide-dashed">
+        <% @expenses.each do |expense| %>
+          <tr>
+            <td class="table__row">
+              <%= expense.date %>
+            </td>
+            <td class="table__row font-semibold">
+              <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>
+            </td>
+            <td class="table__row font-semibold">
+              <%= link_to expense.expense_item, expenses_month_path(month: expense.date.beginning_of_month) %>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-stone-800">
+                <%= link_to edit_expense_path(expense) do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+              </div>
+            </td>
+            <td class="table__row">
+              <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-red-500">
+                <%= link_to expense_path(expense), data: { turbo_method: :delete, turbo_confirm: "Do you want to permanently delete this expense item?" } do %>
+                  <i class="fas fa-trash-alt text-red-500"></i>
+                <% end %>
+              </div>
+            </td>
+            <td class="table__row">
+              <%= expense.remarks %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
