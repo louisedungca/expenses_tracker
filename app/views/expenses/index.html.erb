@@ -67,14 +67,14 @@
               </div>
             </td>
             <td class="table__row">
-              <div class="text-sm text-gray-900">
+              <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-stone-800">
                 <%= link_to edit_expense_path(expense) do %>
                   <i class="fa-solid fa-pen-to-square"></i>
                 <% end %>
               </div>
             </td>
             <td class="table__row">
-              <div class="text-sm text-gray-900">
+              <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-red-500">
                 <%= link_to expense_path(expense), data: { turbo_method: :delete, turbo_confirm: "Do you want to permanently delete this expense item?" } do %>
                   <i class="fas fa-trash-alt text-red-500"></i>
                 <% end %>
