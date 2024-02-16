@@ -1,3 +1,23 @@
-<div>
-  <h1>Expense Item</h1>
-</div>
+<header class="sticky inset-0 z-20 h-16 w-full bg-stone-400/75 border-4 border-stone-950 flex justify-between items-center gap-2 pr-4">
+  <div class="group">
+    <%= link_to "Home", expenses_path, class:"tab" %>
+  </div>
+  
+  <div class="flex gap-2">  
+    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 bg-stone-950 shadow-retro__circle"></div>
+    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
+    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
+  </div>
+</header>
+
+<section class="border-b-4 border-r-4 border-l-4 border-stone-950 h-full w-full flex flex-col items-center sm:gap-4 px-4 py-2">
+
+  <div class="w-full h-fit sm:p-2 grid place-items-center text-fSize__xl uppercase font-semibold"></div>
+    <h1>Add Expense</h1>
+  </div>
+
+  <div class="w-full sm:w-1/2 h-full px-2 sm:py-2">
+    <%= render partial: "expense_form", locals: {expense: @expense} %>
+
+</section>
+

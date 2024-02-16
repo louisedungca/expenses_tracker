@@ -29,6 +29,10 @@
   .input__block {
     @apply flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center;
   }
+
+  .tab {
+    @apply border-r-4 border-stone-950 py-4 px-6 h-full font-semibold hover:bg-stone-300 hover:border-4 hover:py-3;
+  }
 }
 
 .field_with_errors {
