@@ -16,48 +16,67 @@
     <h1>Expenses</h1>
   </div>
 
-  <div class="border-2 border-stone-950 border-dashed w-5/6 h-auto rounded-lg">  
-    <table class="min-w-full divide-y divide-stone-600">
+  <div class="">
+    <p class="font-bold fSize__lg text-stone-900">
+      Total:
+      <%= number_to_currency(@total_amount, precision: 2, unit: "PHP ") %>
+    </p>
+  </div>
+
+  <div class="w-fit h-auto grid place-items-center border-4 border-stone-950 rounded-xl shadow-retro__dark">  
+    <table class="table-auto divide-y divide-stone-600 ">
       <thead class="bg-stone-700">
         <tr>
-          <th scope="col" class="px-6 py-3 text-left text-fSize__sm font-medium text-stone-50 uppercase tracking-wider">
+          <th scope="col" class="table__header">
             Date
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-fSize__sm font-medium text-stone-50 uppercase tracking-wider">
+          <th scope="col" class="table__header">
             Amount
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-fSize__sm font-medium text-stone-50 uppercase tracking-wider">
+          <th scope="col" class="table__header">
             Expense Item
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-fSize__sm font-medium text-stone-50 uppercase tracking-wider">
+          <th scope="col" class="table__header">
+          </th>
+          <th scope="col" class="table__header">
+          </th>
+          <th scope="col" class="table__header">
             Remarks
-          </th>
-          <th scope="col" class="px-6 py-3 text-left text-fSize__sm font-medium text-stone-50 uppercase tracking-wider">
-          </th>
-          <th scope="col" class="px-6 py-3 text-left text-fSize__sm font-medium text-stone-50 uppercase tracking-wider">
           </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-stone-600 divide-dashed">
+      <tbody class="divide-y-2 divide-stone-600 divide-dashed">
         <% @expenses.each do |expense| %>
           <tr>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"><%= expense.date %></div>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= expense.date %>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"><%= expense.amount %></div>
+            <td class="table__row">
+              <div class="text-sm text-gray-900 font-semibold">
+                <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"><%= expense.expense_item %></div>
+            <td class="table__row">
+              <div class="text-sm text-gray-900 font-semibold">
+                <%= expense.expense_item %>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"><%= expense.remarks %></div>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= link_to "Edit", edit_expense_path(expense) %>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"><%= link_to "Edit", edit_expense_path(expense) %></div>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= link_to "Delete", expense_path(expense), data: {turbo_method: :delete, turbo_confirm: "Do you want to permanently delete this expense item?"} %>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"><%= link_to "Delete", expense_path(expense), data: {turbo_method: :delete, turbo_confirm: "Do you want to permanently delete this expense item?"} %></div>
+            <td class="table__row">
+              <div class="text-sm text-gray-900">
+                <%= expense.remarks %>
+              </div>
             </td>
           </tr>
         <% end %>

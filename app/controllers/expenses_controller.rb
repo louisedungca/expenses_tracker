@@ -2,7 +2,8 @@ class ExpensesController < ApplicationController
   before_action :set_expense, except: [:index, :new, :create]
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all.order(date: :desc)
+    @total_amount = @expenses.sum(:amount)
   end
 
   def show
