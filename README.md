@@ -1,7 +1,6 @@
 # [Expenses Tracker](https://expense-db-h6ko.onrender.com)
-[live demo](https://expense-db-h6ko.onrender.com)
 
-Track, organize, and stay on top of your finances with this handy tool.
+Track, organize, and stay on top of your finances with this [handy tool](https://expense-db-h6ko.onrender.com).
 
 ### Key Features:
 1. **Manage Expenses Easily**: Effortlessly add, edit, and delete expenses with simple actions.
