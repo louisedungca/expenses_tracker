@@ -1,9 +1,10 @@
-<p class="font-bold text-fSize__lg text-stone-900">
-  Total:
-  <%= number_to_currency(@total_amount, precision: 2, unit: "PHP ") %>
-</p>
+<div class="w-full flex flex-col gap-4 items-center">
+  <p class="font-bold text-fSize__lg text-stone-900">
+    Total:
+    <%= number_to_currency(@total_amount, precision: 2, unit: "PHP ") %>
+  </p>
 
-<div class="w-fit h-auto grid place-items-center border-4 border-stone-950 rounded-xl shadow-retro__dark">  
+  <div class="w-fit h-auto grid place-items-center border-4 border-stone-950 rounded-xl shadow-retro__dark">  
     <table class="table-auto divide-y divide-stone-600 ">
       <thead class="bg-stone-700">
         <tr>
@@ -60,3 +61,4 @@
       </tbody>
     </table>
   </div>
+</div>

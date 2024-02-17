@@ -1,26 +1,33 @@
-<header class="sticky inset-0 z-20 h-16 w-full bg-stone-400/75 border-4 border-stone-950 flex justify-between items-center gap-2 pr-4">
-  <div class="flex justify-center items-center">      
-    <%= link_to expenses_path, class:"tab" do %>
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
-    <% end %>
-    <%= link_to new_expense_path, class:"tab" do %>
-      <i class="fa-solid fa-circle-plus"></i>
-      <span>Add Expense</span>
-    <% end %>  
-  </div>
-  
-  <div class="flex gap-2">  
-    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
-    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 bg-stone-950 shadow-retro__circle"></div>    
-    <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
-  </div>
-</header>
 
-<section class="border-b-4 border-r-4 border-l-4 border-stone-950 h-full w-full flex flex-col items-center sm:gap-4 px-4 pb-10">
-  <div class="w-full h-fit sm:p-2 grid place-items-center text-fSize__xl uppercase font-semibold">
-    <h1><%= @expenses.first.date.strftime("%B %Y") %></h1>
-  </div> 
-  
-  <%= render partial: "expenses_table" %>
-</section>
+  <header class="sticky inset-0 z-20 h-16 w-full bg-stone-400 border-4 border-stone-950 flex justify-between items-center gap-2 pr-4">
+    <div class="flex justify-center items-center">      
+      <%= link_to expenses_path, class:"tab" do %>
+      <i class="fa-solid fa-house"></i>
+      <span class="hidden md:inline-block">Home</span>
+      <% end %>
+      <%= link_to new_expense_path, class:"tab" do %>
+        <i class="fa-solid fa-circle-plus"></i>
+        <span class="hidden md:inline-block">Add Expense</span>
+      <% end %>  
+    </div>
+    
+    <div class="flex gap-2">  
+      <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
+      <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 bg-stone-950 shadow-retro__circle"></div>    
+      <div class="w-4 aspect-1 rounded-full border-2 border-stone-950 shadow-retro__circle"></div>
+    </div>
+  </header>
+
+  <section class="border-b-4 border-r-4 border-l-4 border-stone-950 h-full w-full flex flex-col items-center sm:gap-4 px-4 pb-10 overflow-y-auto">
+    <div class="w-full h-fit sm:p-2 grid place-items-center text-fSize__xl uppercase font-semibold">
+      <h1><%= @expenses.first.date.strftime("%B %Y") %></h1>
+    </div> 
+
+    <div class="hidden w-full lg:grid place-items-center">
+      <%= render partial: "expenses_table" %>
+    </div>
+
+    <div class="w-full grid place-items-center lg:hidden">
+      <%= render partial: "expenses_table_sm" %>
+    </div> 
+  </section>
