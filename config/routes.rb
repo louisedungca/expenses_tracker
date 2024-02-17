@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :expenses
 
   get "/expenses/month/:month",
-  to: "expenses#monthly_expenses",
+  to: "expenses#show_monthly_expenses",
   as: "expenses_month"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
