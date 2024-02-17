@@ -31,7 +31,7 @@
   }
 
   .tab {
-    @apply border-r-4 border-stone-950 py-4 px-6 h-full font-semibold hover:bg-stone-300 hover:border-4 hover:py-3;
+    @apply flex gap-3 justify-center items-center border-r-4 border-stone-950 py-4 px-6 h-full font-semibold hover:bg-stone-300 hover:border-4 hover:py-3;
   }
 
   .table__header {
