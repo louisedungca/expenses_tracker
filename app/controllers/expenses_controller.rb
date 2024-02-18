@@ -6,10 +6,6 @@ class ExpensesController < ApplicationController
     @total_amount = @expenses.sum(:amount)
   end
 
-  def show
-    redirect_to expenses_month_path(@expense.date.beginning_of_month)
-  end
-
   def show_monthly_expenses
     month_start = params[:month].to_date.beginning_of_month
     month_end = month_start.end_of_month
