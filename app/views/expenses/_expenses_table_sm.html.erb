@@ -8,7 +8,7 @@
       <% @expenses.each do |expense| %>
         <div class="flex flex-col justify-center gap-1 px-4 py-2 text-xs font-bold">
           <div class="flex justify-between items-center">
-            <div class="flex flex-col justify-center">
+            <div class="flex flex-col justify-center text-pretty overflow-hidden max-h-[80px] max-w-[220px]">
             <%= content_tag(:span, expense.date, class: "text-[0.55rem] font-light") %>
             <% month = expense.date.beginning_of_month %>
             <%= link_to expense.expense_item, expenses_month_path(month: month), class:"font-bold text-sm" %>
@@ -30,7 +30,10 @@
           <%= number_to_currency(expense.amount, precision: 2, unit: "₱ ") %>     
 
           <div class="mt-2 text-[0.6rem] font-light">
-            <%= expense.remarks.blank? ? "" : "** #{expense.remarks}" %>
+            <p class="truncate max-h-[80px] max-w-[220px] whitespace-normal">
+              <%= expense.remarks.blank? ? "" : "** #{expense.remarks}" %>
+            </p>
+            
           </div>
         </div>
       <% end %>

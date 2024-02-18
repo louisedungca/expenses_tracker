@@ -5,7 +5,7 @@
   </p>
 
   <div class="w-fit h-auto grid place-items-center border-4 border-stone-950 rounded-xl shadow-retro__dark">  
-    <table class="table-auto divide-y divide-stone-600 ">
+    <table class="table-auto divide-y divide-stone-600">
       <thead class="bg-stone-700">
         <tr>
           <th scope="col" class="table__header">
@@ -28,7 +28,7 @@
       </thead>
       <tbody class="divide-y-2 divide-stone-600 divide-dashed">
         <% @expenses.each do |expense| %>
-          <tr>
+          <tr class="">
             <td class="table__row">
               <%= expense.date %>
             </td>
@@ -37,7 +37,9 @@
             </td>
             <td class="table__row font-semibold">
               <% month = expense.date.beginning_of_month %>
-              <%= link_to expense.expense_item, expenses_month_path(month: month) %>
+              <p class="text-pretty overflow-hidden max-h-[80px] max-w-[220px]">
+                <%= link_to expense.expense_item, expenses_month_path(month: month) %>
+              </p>              
             </td>
             <td class="table__row">
               <div class="text-sm text-gray-900 p-2 rounded-lg border-2 hover:border-stone-800">
@@ -54,7 +56,9 @@
               </div>
             </td>
             <td class="table__row">
-              <%= expense.remarks %>
+              <p class="truncate max-h-[80px] max-w-[220px]">
+                <%= expense.remarks %>
+              </p>              
             </td>
           </tr>
         <% end %>
