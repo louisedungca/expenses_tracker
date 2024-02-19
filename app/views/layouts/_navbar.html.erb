@@ -6,7 +6,7 @@
         <span class="hidden md:inline-block">Home</span>
       <% end %>
     <% end %>
-    <% unless controller_name == "expenses" && action_name == "new" %>             
+    <% unless controller_name == "expenses" && action_name == "new" || (@expense && @expense.errors.any?) %>             
       <%= link_to new_expense_path, class:"tab" do %>
         <i class="fa-solid fa-circle-plus"></i>
         <span class="hidden md:inline-block">Add Expense</span>

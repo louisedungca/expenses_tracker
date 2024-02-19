@@ -6,6 +6,10 @@ class ExpensesController < ApplicationController
     @total_amount = @expenses.sum(:amount)
   end
 
+  def show
+    redirect_to expenses_month_path(@expense.date.beginning_of_month)
+  end
+
   def show_monthly_expenses
     month_start = params[:month].to_date.beginning_of_month
     month_end = month_start.end_of_month
@@ -56,6 +60,10 @@ class ExpensesController < ApplicationController
 
   def set_expense
     @expense = Expense.find(params[:id])
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Oh no! The page you were looking for does not exist."
+    redirect_to root_path
   end
 
   def expense_params
