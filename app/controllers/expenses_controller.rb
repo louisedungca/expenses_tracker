@@ -29,7 +29,7 @@ class ExpensesController < ApplicationController
       flash[:notice] = "Expense item successfully added!"
       redirect_to expenses_path
     else
-      flash[:alert] = "Oops, a problem occurred. Please try again."
+      flash[:alert] = "Oops, there was a problem submitting the form. Please try again."
       render :new, status: 422
     end
   end
@@ -42,7 +42,7 @@ class ExpensesController < ApplicationController
       flash[:notice] = "Expense item successfully updated!"
       redirect_to expenses_path
     else
-      flash[:alert] = "Oops, a problem occurred. Please try again."
+      flash[:alert] = "Oops, there was a problem submitting the form. Please try again."
       render :edit, status: 422
     end
   end
@@ -51,7 +51,7 @@ class ExpensesController < ApplicationController
     if @expense.destroy
       flash[:notice] = "Expense item permanently deleted."
     else
-      flash[:alert] = "Oops, a problem occurred. Please try again."
+      flash[:alert] = "Oops, there was a problem deleting the item. Please try again."
       render :index, status: 422
     end
   end
