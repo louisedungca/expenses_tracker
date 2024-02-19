@@ -11,7 +11,8 @@ Track, organize, and stay on top of your finances with this [handy tool](https:/
 
 ### Dependencies
 This app relies on **Rails 7**, **Tailwind CSS**, and **PostgreSQL**. 
-It may also use extra gems for tasks like authentication, testing, and deployment. Check the Gemfile and Gemfile.lock for the full list of gems and their versions.
+<!-- It may also use extra gems for tasks like authentication, testing, and deployment.  -->
+Check the Gemfile and Gemfile.lock for the full list of gems and their versions.
 
 ### Configuration
 1. Clone the repository to your local machine using the following command:
