@@ -50,6 +50,7 @@ class ExpensesController < ApplicationController
   def destroy
     if @expense.destroy
       flash[:notice] = "Expense item permanently deleted."
+      redirect_to expenses_path
     else
       flash[:alert] = "Oops, there was a problem deleting the item. Please try again."
       render :index, status: 422
